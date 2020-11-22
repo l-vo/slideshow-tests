@@ -14,6 +14,16 @@ class: impact cover
 ## Nov. 24, 2020
 
 ---
+<div style="text-align: center">
+<img src="img/me.png" style="width: 25%"/><br />
+<br />
+<strong>Laurent VOULLEMIER</strong>
+<br />
+<br />
+@Sensiolabs<br /><br />
+Team P50/MiddleOffice
+</div>
+---
 
 class: impact subcover
 
