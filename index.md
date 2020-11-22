@@ -59,7 +59,7 @@ An unit test should be...
 # Test a behavior, not an implementation
 
 <p style="text-align: center">
-<img src="/img/code1.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520EditArticleVoter%2520extends%2520Voter%250A%257B%250A%2520%2520protected%2520function%2520supports%28string%2520%2524attribute%252C%2520%2524subject%29%253A%2520bool%250A%2520%2520%257B%250A%2520%2520%2520%2520return%2520%27EDIT%27%2520%253D%253D%253D%2520%2524attribute%2520%2526%2526%2520%2524subject%2520instanceof%2520Article%253B%2520%2520%2520%250A%2520%2520%257D%250A%2520%2520%250A%2520%2520%252F**%250A%2520%2520%2520*%2520%2540param%2520Article%2520%2524article%250A%2520%2520%2520*%252F%250A%2520%2520protected%2520function%2520voteOnAttribute%28string%2520%2524attribute%252C%2520%2524article%252C%2520TokenInterface%2520%2524token%29%253A%2520bool%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524user%2520%253D%2520%2524token-%253EgetUser%28%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520if%2520%28%21%2524user%2520instanceof%2520User%29%2520%257B%250A%2520%2520%2520%2520%2520%2520return%2520false%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520return%2520%2524article-%253EisPublic%28%29%2520%257C%257C%2520%2524article-%253EgetAuthor%28%29%2520%253D%253D%253D%2520%2524user%253B%2520%250A%2520%2520%257D%2520%2520%250A%257D" style="width: 90%; margin-top: -50px;"/>
+<img src="img/code1.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520EditArticleVoter%2520extends%2520Voter%250A%257B%250A%2520%2520protected%2520function%2520supports%28string%2520%2524attribute%252C%2520%2524subject%29%253A%2520bool%250A%2520%2520%257B%250A%2520%2520%2520%2520return%2520%27EDIT%27%2520%253D%253D%253D%2520%2524attribute%2520%2526%2526%2520%2524subject%2520instanceof%2520Article%253B%2520%2520%2520%250A%2520%2520%257D%250A%2520%2520%250A%2520%2520%252F**%250A%2520%2520%2520*%2520%2540param%2520Article%2520%2524article%250A%2520%2520%2520*%252F%250A%2520%2520protected%2520function%2520voteOnAttribute%28string%2520%2524attribute%252C%2520%2524article%252C%2520TokenInterface%2520%2524token%29%253A%2520bool%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524user%2520%253D%2520%2524token-%253EgetUser%28%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520if%2520%28%21%2524user%2520instanceof%2520User%29%2520%257B%250A%2520%2520%2520%2520%2520%2520return%2520false%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520return%2520%2524article-%253EisPublic%28%29%2520%257C%257C%2520%2524article-%253EgetAuthor%28%29%2520%253D%253D%253D%2520%2524user%253B%2520%250A%2520%2520%257D%2520%2520%250A%257D" style="width: 90%; margin-top: -50px;"/>
 </p>
 
 ???
@@ -68,7 +68,7 @@ Explain how voters work in Symfony
 # Test a behavior, not an implementation
 
 <p style="text-align: center">
-<img src="/img/code2.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520EditArticleVoterTest%2520extends%2520TestCase%250A%257B%250A%2520%2520public%2520function%2520testAuthenticatedUserCanEditPublicArticle%28%29%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524article%2520%253D%2520new%2520Article%28%29%253B%250A%2520%2520%2520%2520%2524article-%253EsetPublic%28true%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524token%2520%253D%2520new%2520UsernamePasswordToken%28new%2520User%28%29%252C%2520%27%27%252C%2520%27%27%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524voter%2520%253D%2520new%2520EditArticleVoter%28%29%253B%250A%2520%2520%2520%2520%2524vote%2520%253D%2520%2524voter-%253Evote%28%27EDIT%27%252C%2520%2524article%252C%2520%2524token%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524this-%253EassertTrue%28%2524vote%29%253B%250A%2520%2520%257D%250A%2520%2520%250A%2520%2520%252F%252F...%250A%257D" style="width: 80%; margin-top: -60px;"/>
+<img src="img/code2.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520EditArticleVoterTest%2520extends%2520TestCase%250A%257B%250A%2520%2520public%2520function%2520testAuthenticatedUserCanEditPublicArticle%28%29%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524article%2520%253D%2520new%2520Article%28%29%253B%250A%2520%2520%2520%2520%2524article-%253EsetPublic%28true%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524token%2520%253D%2520new%2520UsernamePasswordToken%28new%2520User%28%29%252C%2520%27%27%252C%2520%27%27%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524voter%2520%253D%2520new%2520EditArticleVoter%28%29%253B%250A%2520%2520%2520%2520%2524vote%2520%253D%2520%2524voter-%253Evote%28%27EDIT%27%252C%2520%2524article%252C%2520%2524token%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524this-%253EassertTrue%28%2524vote%29%253B%250A%2520%2520%257D%250A%2520%2520%250A%2520%2520%252F%252F...%250A%257D" style="width: 80%; margin-top: -60px;"/>
 </p>
 
 ???
@@ -78,7 +78,7 @@ Explain how voters work in Symfony
 # How to test a configuration ?
 
 <p style="text-align: center">
-<img src="/img/code3.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520NotifyArticlePublished%2520implements%2520EventSubscriberInterface%250A%257B%250A%2520%2520%252F%252F...%250A%2520%2520%250A%2520%2520public%2520function%2520onArticlePublished%28ArticleEvent%2520%2524event%29%253A%2520void%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524article%2520%253D%2520%2524event-%253EgetArticle%28%29%253B%250A%2520%2520%2520%2520%2524mail%2520%253D%2520%252F%252F...%253B%250A%2520%2520%2520%2520%2524this-%253Emailer-%253Esend%28%2524mail%29%253B%2520%2520%250A%2520%2520%257D%250A%2520%2520%250A%2520%2520%252F%252F%2520How%2520to%2520test%2520this%2520%253F%250A%2520%2520public%2520static%2520function%2520getSubscribedEvents%28%29%253A%2520array%250A%2520%2520%257B%250A%2520%2520%2520%2520return%2520%255BArticleEvents%253A%253APUBLISHED%2520%253D%253E%2520%27onArticlePublished%27%255D%253B%250A%2520%2520%257D%2520%2520%250A%257D" style="width: 80%; margin-top: -60px;"/>
+<img src="img/code3.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520NotifyArticlePublished%2520implements%2520EventSubscriberInterface%250A%257B%250A%2520%2520%252F%252F...%250A%2520%2520%250A%2520%2520public%2520function%2520onArticlePublished%28ArticleEvent%2520%2524event%29%253A%2520void%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524article%2520%253D%2520%2524event-%253EgetArticle%28%29%253B%250A%2520%2520%2520%2520%2524mail%2520%253D%2520%252F%252F...%253B%250A%2520%2520%2520%2520%2524this-%253Emailer-%253Esend%28%2524mail%29%253B%2520%2520%250A%2520%2520%257D%250A%2520%2520%250A%2520%2520%252F%252F%2520How%2520to%2520test%2520this%2520%253F%250A%2520%2520public%2520static%2520function%2520getSubscribedEvents%28%29%253A%2520array%250A%2520%2520%257B%250A%2520%2520%2520%2520return%2520%255BArticleEvents%253A%253APUBLISHED%2520%253D%253E%2520%27onArticlePublished%27%255D%253B%250A%2520%2520%257D%2520%2520%250A%257D" style="width: 80%; margin-top: -60px;"/>
 </p>
 
 ???
@@ -87,7 +87,7 @@ getSubscribedEvents: other events can be added, priorities can be added... Test 
 # Configuration may be a part of the behavior
 
 <p style="text-align: center">
-<img src="/img/code4.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520NotifyArticlePublishedTest%2520extends%2520TestCase%250A%257B%250A%2520%2520public%2520function%2520onArticlePublished%28ArticleEvent%2520%2524event%29%253A%2520void%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524expectedEmail%2520%253D%2520%252F*...*%252F%253B%250A%2520%2520%2520%2520%2524mailer%2520%253D%2520%2524this-%253EcreateMock%28MailerInterface%253A%253Aclass%29%253B%250A%2520%2520%2520%2520%2524mailer%250A%2520%2520%2520%2520%2520%2520-%253Eexpects%28%2524this-%253Eonce%28%29%29%250A%2520%2520%2520%2520%2520%2520-%253Ewith%28%2524expectedEmail%29%253B%2520%2520%2520%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524dispatcher%2520%253D%2520new%2520EventDispatcher%28%29%253B%250A%2520%2520%2520%2520%2524dispatcher-%253EaddSubscriber%28new%2520NotifyArticlePublished%28%29%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524article%2520%253D%2520%252F*...*%252F%253B%250A%2520%2520%2520%2520%2524event%2520%253D%2520new%2520ArticleEvent%28%2524article%29%253B%250A%2520%2520%2520%2520%2524dispatcher-%253Edispatch%28ArticleEvents%253A%253APUBLISHED%252C%2520%2524event%29%253B%2520%2520%2520%250A%2520%2520%257D%250A%257D" style="width: 70%; margin-top: -60px;"/>
+<img src="img/code4.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520NotifyArticlePublishedTest%2520extends%2520TestCase%250A%257B%250A%2520%2520public%2520function%2520onArticlePublished%28ArticleEvent%2520%2524event%29%253A%2520void%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524expectedEmail%2520%253D%2520%252F*...*%252F%253B%250A%2520%2520%2520%2520%2524mailer%2520%253D%2520%2524this-%253EcreateMock%28MailerInterface%253A%253Aclass%29%253B%250A%2520%2520%2520%2520%2524mailer%250A%2520%2520%2520%2520%2520%2520-%253Eexpects%28%2524this-%253Eonce%28%29%29%250A%2520%2520%2520%2520%2520%2520-%253Ewith%28%2524expectedEmail%29%253B%2520%2520%2520%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524dispatcher%2520%253D%2520new%2520EventDispatcher%28%29%253B%250A%2520%2520%2520%2520%2524dispatcher-%253EaddSubscriber%28new%2520NotifyArticlePublished%28%29%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524article%2520%253D%2520%252F*...*%252F%253B%250A%2520%2520%2520%2520%2524event%2520%253D%2520new%2520ArticleEvent%28%2524article%29%253B%250A%2520%2520%2520%2520%2524dispatcher-%253Edispatch%28ArticleEvents%253A%253APUBLISHED%252C%2520%2524event%29%253B%2520%2520%2520%250A%2520%2520%257D%250A%257D" style="width: 70%; margin-top: -60px;"/>
 </p>
 ---
 # Test doubles
@@ -136,7 +136,7 @@ http://xunitpatterns.com/Test%20Double.html
   
 <br />
 <br />  
-![Crap index](/img/crap.png)
+![Crap index](img/crap.png)
 <br />
 <br />
 <br />
@@ -149,14 +149,14 @@ class: impact subcover
 ---
 # Unit tests are green
 
-<img src="/img/tests.gif" style="width: 50%"/>
+<img src="img/tests.gif" style="width: 50%"/>
 
 ???
 But e2e and integration tests are not
 ---
 # Test types
 <br /><br />
-<img src="/img/test-types.png" style="width: 50%"/>
+<img src="img/test-types.png" style="width: 50%"/>
 
 ???
 Service tests = Integration tests
