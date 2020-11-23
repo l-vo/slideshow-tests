@@ -105,36 +105,6 @@ getSubscribedEvents: other events can be added, priorities can be added... Test 
 <img src="img/code4.png" data-src="https://carbon.now.sh/?bg=rgba%28243%2C243%2C243%2C0%29&t=a11y-dark&wt=none&l=text%2Fx-php&ds=true&dsyoff=10px&dsblur=26px&wc=false&wa=true&pv=56px&ph=56px&ln=true&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520NotifyArticlePublishedTest%2520extends%2520TestCase%250A%257B%250A%2520%2520public%2520function%2520onArticlePublished%28ArticleEvent%2520%2524event%29%253A%2520void%250A%2520%2520%257B%250A%2520%2520%2520%2520%2524expectedEmail%2520%253D%2520%252F*...*%252F%253B%250A%2520%2520%2520%2520%2524mailer%2520%253D%2520%2524this-%253EcreateMock%28MailerInterface%253A%253Aclass%29%253B%250A%2520%2520%2520%2520%2524mailer%250A%2520%2520%2520%2520%2520%2520-%253Eexpects%28%2524this-%253Eonce%28%29%29%250A%2520%2520%2520%2520%2520%2520-%253Ewith%28%2524expectedEmail%29%253B%2520%2520%2520%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524dispatcher%2520%253D%2520new%2520EventDispatcher%28%29%253B%250A%2520%2520%2520%2520%2524dispatcher-%253EaddSubscriber%28new%2520NotifyArticlePublished%28%29%29%253B%250A%2520%2520%2520%2520%250A%2520%2520%2520%2520%2524article%2520%253D%2520%252F*...*%252F%253B%250A%2520%2520%2520%2520%2524event%2520%253D%2520new%2520ArticleEvent%28%2524article%29%253B%250A%2520%2520%2520%2520%2524dispatcher-%253Edispatch%28ArticleEvents%253A%253APUBLISHED%252C%2520%2524event%29%253B%2520%2520%2520%250A%2520%2520%257D%250A%257D" style="width: 70%; margin-top: -60px;"/>
 </p>
 ---
-# Test doubles
-
---
-- **Stub**: control point for the indirect inputs of the *SUT*
-
---
-
-- **Spy**: stub + indirect outputs of the *SUT* captures
-
---
-
-- **Mock**: stub + assertions on indirect outputs of the *SUT*
-
---
-
-- **Fake object**: simplified *DOC*
-
---
-
-- **Dummy object**: comparable to a null object
-  
---
-<br />
-<br />
-<br />
-*SUT*: system under test  
-*DOC*: depended-on component  
-  
-http://xunitpatterns.com/Test%20Double.html
----
 # 100% code coverage ? Unit test everything ?
 <br />
 - Code coverage is a tool. It should not be the goal.
