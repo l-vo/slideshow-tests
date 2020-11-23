@@ -158,18 +158,23 @@ Service tests = Integration tests
 But fake objects can also be used (fake api client, fake mail server...)
 ---
 # Fixtures
+
+⚠️ Avoid to share fixtures between tests
   
-<br />  
-- Tools like Faker can be used to generate big predictable sets of data
-- But avoid to share fixtures between tests
+## Tooling
+- Faker / Alice fixtures (rely on Faker) / Doctrine fixtures  
+
+## Speed up database fixtures
+- In memory database (sqlite)/In memory filesystem (tmpfs)
+- Transactions (Doctrine test bundle)
+- Database dumps / Read only fixtures (but involves to have shared fixtures)  
   
-<br />  
-Speed up database fixtures:
-- In memory database
-- Transactions (but don't rely on auto-generated identifiers)
+⚠️ don't rely on auto-generated identifiers
 
 ???
-Don't rely on auto-generated identifiers: generators are incremented even when the transaction is cancelled (mysql, postgres...).
+- Generating and loading fixtures are often the bottleneck
+- Avoid to share fixtures: a common base is possible but the base should be stable
+- Don't rely on auto-generated identifiers: generators are incremented even when the transaction is cancelled (mysql, postgres...).
 ---
 class: impact subcover
 
