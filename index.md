@@ -214,6 +214,9 @@ class: impact subcover
 --
 
 - **Then**: inspect the output of the system (UI) not something deeply buried inside (database state...) 
+
+???
+Common sense: don't test with a real browser if it's not needed
 ---
 # Some other test types
 <br />
